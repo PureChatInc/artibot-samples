@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
+using Newtonsoft.Json;
 
 namespace WebhookSample.Controllers
 {
@@ -27,7 +28,7 @@ namespace WebhookSample.Controllers
 		/// </summary>
 		/// <param name="requestBody"></param>
 		[HttpPost]
-		public IActionResult Post([FromBody] string requestBody)
+		public IActionResult Post([FromBody] object requestBody)
 		{
 			// This is the secret that you entered into your ArtiBot when you setup your webhook.
 			// For better security do not embed the secret in your source but read it from a
@@ -46,7 +47,7 @@ namespace WebhookSample.Controllers
 			return Ok();
 		}
 
-		public bool HasValidSignature(HttpRequest httpRequest, string requestBody, string secret)
+		private bool HasValidSignature(HttpRequest httpRequest, object requestBody, string secret)
 		{
 			var hasValidSignature = false;
 
@@ -66,18 +67,18 @@ namespace WebhookSample.Controllers
 			return hasValidSignature;
 		}
 
-		private string GetSignature(HttpRequest httpRequest, string requestBody, string secret)
+		private string GetSignature(HttpRequest httpRequest, object requestBody, string secret)
 		{
 			var httpMethod = httpRequest.Method;
 			var absoluteUri = Microsoft.AspNetCore.Http.Extensions.UriHelper.GetEncodedUrl(httpRequest);
-			var content = string.IsNullOrEmpty(requestBody) ? "" : requestBody;
+			var content = (requestBody == null) ? "" : JsonConvert.SerializeObject(requestBody);
 
 			var contentToSign = $"{httpMethod}&{absoluteUri}&{content}";
 
 			return ComputeSha1Hmac(secret, contentToSign);
 		}
 
-		public static string ComputeSha1Hmac(string secret, string contentToSign)
+		private static string ComputeSha1Hmac(string secret, string contentToSign)
 		{
 			var encoding = new UTF8Encoding();
 			var keyBytes = encoding.GetBytes(secret);
@@ -89,7 +90,7 @@ namespace WebhookSample.Controllers
 			return ByteArrayToString(hash);
 		}
 
-		public static string ByteArrayToString(byte[] byteArray)
+		private static string ByteArrayToString(byte[] byteArray)
 		{
 			return BitConverter.ToString(byteArray).Replace("-", "");
 		}
