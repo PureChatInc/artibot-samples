@@ -4,7 +4,7 @@
     "windowsAuthentication": false, 
     "anonymousAuthentication": true, 
     "iisExpress": {
-      "applicationUrl": "http://localhost:51485",
+      "applicationUrl": "http://localhost:5000",
       "sslPort": 0
     }
   },
@@ -19,7 +19,7 @@
     },
     "WebhookSample": {
       "commandName": "Project",
-      "launchBrowser": true,
+      "launchBrowser": false,
       "launchUrl": "api/values",
       "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
