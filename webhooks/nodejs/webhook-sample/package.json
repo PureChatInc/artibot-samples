@@ -2,7 +2,7 @@
   "name": "artibot-webhook-test",
   "version": "1.0.0",
   "description": "Used for testing ArtiBot.ai webhooks",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
   },
   "author": "Justin Chmura <justin@purechat.com> (https://artibot.ai)",
