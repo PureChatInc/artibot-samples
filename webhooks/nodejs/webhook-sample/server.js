@@ -4,7 +4,14 @@ const crypto = require('crypto');
 
 const PORT = process.env.PORT || 8000;
 
-// This should match the secret specified on the webhook setup in ArtiBot.ai
+// This is the header that will be sent to you containing the signature of the request
+// based on the your secret, the HTTP method, the absolute URI, and the body of
+// the request.
+const ARTIBOT_SIGNATURE_HEADER = 'x-artibot-signature';
+
+// This is the secret that you entered into your ArtiBot when you setup your webhook.
+// For better security do not embed the secret in your source but read it from a
+// config file or a key management service.
 const WEBHOOK_SECRET = 'testing';
 
 const createSignature = (req) => {
@@ -17,7 +24,7 @@ const createSignature = (req) => {
 
 const verifyWebhookSignature = (req, res, next) => {
     const signature = createSignature(req);
-    if (signature !== req.headers['x-artibot-signature'].toLowerCase()) {
+    if (signature !== req.headers[ARTIBOT_SIGNATURE_HEADER].toLowerCase()) {
         return res.status(403).send('invalid signature');
     }
 
@@ -37,9 +44,10 @@ app.use(bodyParser.json({
 
 app.use(verifyWebhookSignature);
 
+// Receives a POST request from ArtiBot and verifies the signature
 app.post('*', (req, res) => {
     console.log('Received ArtiBot.ai webhook payload', new Date());
-    console.log('Event', req.headers['x-artibot-signature']);
+    console.log('Signature', req.headers[ARTIBOT_SIGNATURE_HEADER]);
     console.log(req.body);
 
     res.sendStatus(204);
