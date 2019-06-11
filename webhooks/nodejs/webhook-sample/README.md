@@ -1,4 +1,4 @@
-# Glo Webhooks Examples
+# ArtiBot Webhooks Examples
 
 ## Running Locally
 
