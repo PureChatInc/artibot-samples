@@ -49,8 +49,8 @@ const getAddressData = (address, cityStZip) => new Promise((resolve, reject) => 
 
     const params = {
         'zws-id': ZILLOW_API_KEY,
-        address: encodeURI(address),
-        citystatezip: encodeURI(cityStZip)
+        address: address,
+        citystatezip: cityStZip
     };
     const query = querystring.stringify(params);
     const url = `http://www.zillow.com/webservice/GetDeepSearchResults.htm?${query}`;
@@ -62,7 +62,14 @@ const getAddressData = (address, cityStZip) => new Promise((resolve, reject) => 
         
         response.on('end', () => {
             const json = xml2json(body);
-            const listing = json.SearchResults.response.results.result;
+            const response = json.SearchResults.response;
+            const message = json.SearchResults.message;
+
+            if (!response) {
+                throw new Error(message.text || 'Error fetching property listing');
+            }
+
+            const listing = response.results.result;
             resolve(listing);
         });
         
