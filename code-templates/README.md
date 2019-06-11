@@ -18,6 +18,10 @@ Takes a color name and stores the hex value on the lead.
 
 Sends an event to Google Analytics which can be used for conversation tracking or tracking usage of the bot.
 
+### [Twitch Is Live](https://github.com/PureChatInc/artibot-samples/tree/master/code-templates/twitch-is-live)
+
+Checks to see if the streamer provided by the user is live.
+
 ### [Zillow Property Information](https://github.com/PureChatInc/artibot-samples/tree/master/code-templates/zillow-property-listing)
 
 Takes an address and retrieves some information from Zillow about the property. It will write out the number of bedrooms, bathrooms, and the Zestimate out to the bot.
