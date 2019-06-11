@@ -27,7 +27,7 @@ exports.handler = (artibotContext) => {
         throw new Error(`Field named ${AGE_FIELD} does not exist.`);
     }
 
-    const age = parseInt(artibotContext.lead.data[AGE_FIELD], 10);
+    const age = parseInt(artibotContext.lead.data[AGE_FIELD].value, 10);
     const over21 = age >= 21;
 
     return {
