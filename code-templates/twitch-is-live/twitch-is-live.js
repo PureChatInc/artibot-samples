@@ -15,6 +15,12 @@ const https = require('https');
 // API key acquired from Twitch after registering an application.
 const TWITCH_CLIENT_ID = '<TWITCH_CLIENT_ID>';
 
+/**
+ * Makes API call to Twitch to grab information about the channel.
+ * 
+ * @param {string} channel Name of Twitch channel to check
+ * @returns {object} If stream is not live, this will be null, otherwise it's information about the stream
+ */
 const getStreamInfo = (channel) => new Promise((resolve, reject) => {
     const requestOptions = {
         host: 'api.twitch.tv',
