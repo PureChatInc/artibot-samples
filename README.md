@@ -1,4 +1,4 @@
-# ArtiBot.ai Samples
+# ArtiBot.ai Webhook Samples
 
 In this repo you'll code samples on how to integrate with Artibot.ai. If you need
 further documentation on anything in this repo, go to our [developer documentation][1].
