@@ -13,6 +13,9 @@ const AGE_FIELD = '<AGE_FIELD>';
 const OVER21_BRANCH_TARGET = '<OVER21_BRANCH_TARGET>';
 const UNDER21_BRANCH_TARGET = '<UNDER21_BRANCH_TARGET>';
 
+/**
+ * ArtiBot Code Handler
+ */
 exports.handler = (artibotContext) => {
     if (!artibotContext.lead.data[AGE_FIELD]) {
         throw new Error(`Field named ${AGE_FIELD} does not exist.`);

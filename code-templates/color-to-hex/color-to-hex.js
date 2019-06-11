@@ -4,6 +4,9 @@
  * found in the list, it will mark the input as invalid.
  */
 
+/**
+ * ArtiBot Code Handler
+ */
 exports.handler = async (artibotContext) => {
     const color = artibotContext.input.toLowerCase();
     const hex = colorConversions[color];

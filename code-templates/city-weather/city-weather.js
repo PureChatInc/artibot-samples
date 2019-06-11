@@ -3,8 +3,8 @@
  * via the OpenWeatherMap API. It writes out the current temperature
  * and cloud coverage as fields onto the lead.
  * 
- * First step is to and obtain an API key for OpenWeatherMap, which
- * can be done by signing up at: https://openweathermap.org/
+ * First step is to obtain an API key from OpenWeatherMap, which
+ * can be done by signing up at: https://openweathermap.org/.
  * Once you have your API key, put that into the `OPEN_WEATHER_MAP_API_KEY`
  * variable.
  * 

@@ -1,5 +1,8 @@
 ﻿const https = require('https');
 
+/**
+ * ArtiBot Code Handler
+ */
 exports.handler = (artibotContext, callback) => {
 
 	const listLength = 100; // Max length of the list in your google sheets

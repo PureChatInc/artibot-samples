@@ -1,7 +1,7 @@
 ﻿/**
  * This template will send an event to Google Analytics. This can be used for
- * tracking any sort of conversions that happen through ArtiBot. Just change
- * the `ea` to be any event you want to track.
+ * conversation tracking or sending custom events. Just change the `ea` to be
+ * any event you want to track.
  */
 
 const https = require('https');
