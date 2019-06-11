@@ -1,17 +1,44 @@
-﻿const https = require('https');
+﻿/**
+ * This template looks for valid answers to a question in a Google Spreadsheet.
+ * If an invalid answer is provided, this code indicates that the answer was
+ * invalid and writes out all acceptable answers in the chat.
+ * 
+ * First step is to get an API key from Google.
+ * TODO: Step by step through that process here..........................................
+ * 
+ * Once you get your key, paste it in the `GOOGLE_API_KEY` constant down below.
+ * 
+ * Next create an Google Sheet.
+ * TODO: Document sharing / permissions..................................................
+ * Put the field name of that question in the `ADDRESS_FIELD_NAME` constant.
+ * 
+ * This example is designed to be used as a Code Question.
+ */
+
+ const https = require('https');
+
+ // API key from Google.
+const GOOGLE_API_KEY = '<GOOGLE_API_KEY>';
+
+/**
+ * This ID is the value between the "/d/" and the "/edit" in the URL of your spreadsheet.
+ * For example, consider the following URL that references a Google Sheets spreadsheet:
+ * https://docs.google.com/spreadsheets/d/GOOGLE_SPREADSHEET_ID/edit#gid=0
+ */
+ const GOOGLE_SPREADSHEET_ID = '<GOOGLE_SPREADSHEET_ID>';
+
+// Max length of the list in your google sheet
+const MAX_LIST_LENGTH = 100; 
 
 /**
  * ArtiBot Code Handler
  */
 exports.handler = (artibotContext, callback) => {
 
-	const listLength = 100; // Max length of the list in your google sheets
-	const googleKey = 'AIzaSyDY5ukHiFc6dHi0lgtGPTTIw8cXuuK3Oq4';
-
 	const options = {
 		hostname: 'sheets.googleapis.com',
 		port: 443,
-		path: `/v4/spreadsheets/13DQ0XT8vXGtW-gP1AzHBsqB1iKR2GHAwu8iWtb1k2Dg/values/Sheet1!A1:A${listLength}?key=${googleKey}`,
+		path: `/v4/spreadsheets/${GOOGLE_SHEETS_DOCUMENT_ID}/values/Sheet1!A1:A${MAX_LIST_LENGTH}?key=${GOOGLE_API_KEY}`,
 		method: 'GET'
 	};
 

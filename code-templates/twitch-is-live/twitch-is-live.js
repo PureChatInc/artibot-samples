@@ -1,13 +1,15 @@
 /**
  * This template will make a call to Twitch to check to see if a
  * stream is live. If they are found to be live, it will write out
- * there avatar, status, and link to the stream to the bot.
+ * their avatar, status, and link to the stream to the chat conversation.
  * 
- * First step is to obtain an API key from Twitch by going to:
+ * First obtain an API key from Twitch by going to:
  * https://dev.twitch.tv/console/apps/create
  * 
  * Once you have your API key, put it in the `TWITCH_CLIENT_ID`
  * variable.
+ * 
+ * This example is designed to be used as a Code Question.
  */
 
 const https = require('https');

@@ -1,15 +1,23 @@
 ﻿/**
- * This template will take a city and look up the weather for that city
- * via the OpenWeatherMap API. It writes out the current temperature
- * and cloud coverage as fields onto the lead.
+ * This template takes a city and look up the weather for that city
+ * via the OpenWeatherMap API. It stores the current temperature
+ * and cloud coverage as additional data on the lead.
  * 
- * First step is to obtain an API key from OpenWeatherMap, which
+ * The first step is to obtain an API key from OpenWeatherMap, which
  * can be done by signing up at: https://openweathermap.org/.
  * Once you have your API key, put that into the `OPEN_WEATHER_MAP_API_KEY`
  * variable.
  * 
- * Next, is to provide the field name of where to grab the city provided
+ * Next provide the field name of where to grab the city provided
  * by the user in the `CITY_FIELD` variable.
+ * 
+ * This example is designed to be used as a Code Action (code runs
+ * without a question being asked.) It relies on input from another
+ * question (the `CITY_FIELD` question.)
+ * 
+ * It could be written to work as a Code Question with the city being 
+ * provided as the input rather than relying on pulling in the answer
+ * to a city question from `CITY_FIELD`.
  */
 
 const https = require('https');
@@ -67,7 +75,7 @@ exports.handler = (artibotContext, callback) => {
             const additionalLeadData = {
                 additional_data: [{
                     name: 'Temperature',
-                    value: temp.toFixed(1) + "°"
+                    value: temp.toFixed(1) + '°'
                 }, {
                     name: 'Clouds',
                     value: clouds

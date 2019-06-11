@@ -1,17 +1,22 @@
 /**
  * This template makes a call into Zillow to grab listing information for a specific
- * address. It will write you the number bedrooms, bathrooms, and the Zestimate
- * range that Zillow has for the property.
+ * address. Zillow returns the number bedrooms, bathrooms, and the Zestimate
+ * range for the property at the specified address.
  * 
  * First step is to get an API key from Zillow by going here:
  * https://www.zillow.com/howto/api/APIOverview.htm
- * Just follow the steps and they will send you the key via email. Also, make sure
- * the key is given 'Listings API' permission or the API call will fail.
+ * Just follow the steps and they will send you the key via email.
+ * IMPORTANT: Make sure the key is given 'Listings API' permission 
+ * or the API call will fail.
  * 
  * Once you get your key, paste it in the `ZILLOW_API_KEY` constant down below.
- * Next step is to create an "Address" question. Only Line 1, City, State, and
+ * 
+ * Next create an "Address" question. Only Line 1, City, State, and
  * Zip are required to make the call to Zillow. Put the field name of that question
  * in the `ADDRESS_FIELD_NAME` constant.
+ * 
+ * This example is designed to be used as a Code Action (code runs
+ * without a question being asked.)
  */
 
 const http = require('http');

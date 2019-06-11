@@ -2,6 +2,9 @@
  * This template will send an event to Google Analytics. This can be used for
  * conversation tracking or sending custom events. Just change the `ea` to be
  * any event you want to track.
+ * 
+ * This example is designed to be used as a Code Action (code runs
+ * without a question being asked.)
  */
 
 const https = require('https');

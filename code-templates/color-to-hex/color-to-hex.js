@@ -1,7 +1,10 @@
 ﻿/**
  * This is a simple template that will take a name of a color and
  * write the hex value of the color to the lead. If the color isn't
- * found in the list, it will mark the input as invalid.
+ * found in the list, it will mark the input as invalid which will
+ * reprompt the user.
+ * 
+ * This example is designed to be used as a Code Question.
  */
 
 /**

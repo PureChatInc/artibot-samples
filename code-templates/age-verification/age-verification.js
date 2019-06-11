@@ -1,12 +1,18 @@
-﻿/**
- * This template just validates the provided age of a lead by making
- * sure that they are over 21 and branching accordingly.
- * 
- * Provide the field name of the age question field, `AGE_FIELD`,  where
+﻿﻿/**
+ * This template checks the provided age of a lead by and
+ * branches differently depending on if they are 21 or older.
+ *
+ * Provide the field name of the age question field, `AGE_FIELD`, where
  * the user is prompted to provide their age. After that, the check is done,
- * and the bot is told to branch to either the over or under 21 fields.
+ * and the bot is told to branch to either the over or under 21 field.
  * Those are provided via the `OVER21_BRANCH_TARGET` and `UNDER21_BRANCH_TARGET`
- * names.
+ * field names.
+ * 
+ * This example is designed to be used as a Code Action (code runs
+ * without a question being asked.) It relies on input from another
+ * question (the `AGE_FIELD` question with a Field Type of "Number") and two
+ * different fields that can be branched to:
+ * `OVER21_BRANCH_TARGET` and `UNDER21_BRANCH_TARGET`.
  */
 
 const AGE_FIELD = '<AGE_FIELD>';
